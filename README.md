@@ -41,10 +41,6 @@ wits -t /tmp/tantivy-index/ fields list
 wits -t /tmp/tantivy-index/ fields show title
 ```
 
-### `interactive`
-
-Allow to prompt for commands.
-
 ## License
 
 Licensed under either of

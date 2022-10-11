@@ -12,8 +12,6 @@ pub(crate) struct WitsConfig {
 
 #[derive(Debug, Subcommand)]
 pub(crate) enum Commands {
-    /// Allow to prompt for commands.
-    Interactive,
     /// Show detailed disk usage.
     DiskUsage {
         /// Restrict to these fields. If empty, all field usage will be displayed.

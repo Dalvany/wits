@@ -19,3 +19,5 @@ pub(crate) fn list_field(index: &Index) {
         println!("Field name '{}' ({})", field_entry.name(), data_type);
     }
 }
+
+pub(crate) fn detailed_field(index: &Index, field: String) {}
