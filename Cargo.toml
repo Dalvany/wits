@@ -15,3 +15,4 @@ path = "src/wits.rs"
 [dependencies]
 clap = { version = "4.0.11", features = ["derive"] }
 tantivy = "0.18"
+serde = "1.0"

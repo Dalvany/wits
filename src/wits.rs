@@ -2,6 +2,7 @@ use clap::Parser;
 use tantivy::{Index, Result};
 
 use crate::config::{Commands, FieldsInfo, WitsConfig};
+use crate::fields::Fields;
 
 mod config;
 mod fields;
@@ -13,9 +14,12 @@ fn main() -> Result<()> {
     let index = Index::open_in_dir(args.tantivy_directory)?;
 
     match args.command {
-        Commands::DiskUsage { fields } => space_usage::show_space_usage(&index, fields)?,
+        Commands::DiskUsage { fields } => {
+            let usage = space_usage::DiskUsage::new(&index, Some(fields))?;
+            println!("{}", usage);
+        }
         Commands::Fields(field_info) => match field_info {
-            FieldsInfo::List => fields::list_field(&index),
+            FieldsInfo::List => println!("{}", Fields::from(&index)),
             FieldsInfo::Show { field } => fields::detailed_field(&index, field),
         },
     }

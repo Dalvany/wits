@@ -22,6 +22,7 @@ already offers this via `inspect` subcommand.
 ```shell
 wits -t /tmp/tantivy-index/ disk-usage
 
+# Restrict stats to some fields
 wits -t /tmp/tantivy-index/ disk-usage title body
 ```
 
@@ -40,6 +41,10 @@ wits -t /tmp/tantivy-index/ fields list
 ```shell
 wits -t /tmp/tantivy-index/ fields show title
 ```
+
+## TODO
+
+- [ ] Provide also as library.
 
 ## License
 
