@@ -94,6 +94,8 @@ impl Display for SegmentUsage {
 /// Disk usage of an [index](tantivy::Index).
 #[derive(Clone, Debug, Ord, PartialOrd, Eq, PartialEq, Hash, Serialize, Deserialize)]
 pub struct DiskUsage {
+    /// Number of documents
+    num_doc: u64,
     /// Total size of the index.
     total_usage: usize,
     /// Segments.
@@ -102,6 +104,7 @@ pub struct DiskUsage {
 
 impl Display for DiskUsage {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        writeln!(f, "Number of documents : {}", self.num_doc)?;
         writeln!(f, "Total : {} bytes", self.total_usage)?;
         writeln!(f, "Number of segments : {}", self.segments.len())?;
         for su in &self.segments {
@@ -199,6 +202,7 @@ impl DiskUsage {
         }
 
         Ok(Self {
+            num_doc: searcher.num_docs(),
             total_usage: total,
             segments: sus,
         })
